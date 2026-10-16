@@ -1,0 +1,3 @@
+Heap próprio: 76 ms | PriorityQueue: 73 ms | mesma ordem de saída: true
+1000 buscas em 100000 chamados: ArrayList 242 ms | Tabela hash 0 ms
+Estatísticas da tabela: capacidade=262143, elementos=100000, buckets com colisão=0, maior cadeia=1, redimensionamentos=15

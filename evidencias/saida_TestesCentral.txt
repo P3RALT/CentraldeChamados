@@ -1,0 +1,31 @@
+#   Caso                 Entrada                                    Situação
+1   Cadastro             6 chamados (IDs 100-105)                   APROVADO
+      obtido: 6 armazenados
+2   Colisão              IDs 10, 17, 24 (índice 3 com 7 buckets)    APROVADO
+      obtido: índices=3,3,3; todos encontrados=true
+3   Busca                ID 102                                     APROVADO
+      obtido: ID 102 prio 3
+4   Busca inválida       ID 999                                     APROVADO
+      obtido: null (sem exceção)
+5   Prioridade           consultarProximo() 2x                      APROVADO
+      obtido: ID 101 prio 5; quantidade=6
+6   Empate               prio 5: IDs 101 (1º) e 105 (6º)            APROVADO
+      obtido: próximo = ID 101
+7   Remoção              atenderProximo() e buscar ID 101           APROVADO
+      obtido: buscarPorId=null; novo próximo=ID 105
+8   Fila vazia           atenderProximo() sem chamados              APROVADO
+      obtido: null, sem exceção
+9   ID duplicado         cadastrar ID 100 duas vezes                APROVADO
+      obtido: segunda=false; qtd=1; prio original=2
+10  Prioridade inválida  prioridades 0 e 6                          APROVADO
+      obtido: IllegalArgumentException
+11  Ordem completa       9 chamados variados                        APROVADO
+      obtido: 102(p5) 103(p5) 108(p5) 105(p4) 100(p3) 106(p3) 104(p2) 101(p1) 107(p1)
+12  Redimensionamento    1000 IDs múltiplos de 7                    APROVADO
+      obtido: capacidade=2047, elementos=1000, buckets com colisão=0, maior cadeia=1, redimensionamentos=8
+13  Alterar prioridade   ID 100 de 1 para 5                         APROVADO
+      obtido: próximo = ID 100
+14  Remoção em cadeia    remover 17 da cadeia 10->17->24            APROVADO
+      obtido: 10=true, 17=false, 24=true
+
+Total: 14 | Aprovados: 14 | Reprovados: 0

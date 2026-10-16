@@ -1,0 +1,56 @@
+=== Resultado esperado da atividade ===
+Cadastrar chamado: 101 - prioridade 2
+Cadastrar chamado: 102 - prioridade 5
+Cadastrar chamado: 103 - prioridade 3
+
+Buscar ID 103:
+Chamado encontrado: 103
+
+Próximo chamado:
+  102 - prioridade 5
+
+Chamado atendido:
+  102 - prioridade 5
+
+Nova prioridade da fila:
+  103 - prioridade 3
+
+=== Demonstração completa ===
+Cadastro ID 10: OK | Chamado{id=10, solicitante='Diego', descricao='Senha bloqueada', prioridade=2 (Normal), chegada=1}
+Cadastro ID 17: OK | Chamado{id=17, solicitante='Elisa', descricao='Wi-Fi instável', prioridade=4 (Alta), chegada=2}
+Cadastro ID 24: OK | Chamado{id=24, solicitante='Fábio', descricao='Monitor sem imagem', prioridade=2 (Normal), chegada=3}
+Cadastro ID 5: OK | Chamado{id=5, solicitante='Gabi', descricao='Banco de dados indisponível', prioridade=5 (Crítica), chegada=4}
+Cadastro ID 8: OK | Chamado{id=8, solicitante='Hugo', descricao='Instalar software', prioridade=1 (Baixa), chegada=5}
+Cadastro ID 15: OK | Chamado{id=15, solicitante='Iara', descricao='Sistema de pagamentos parado', prioridade=5 (Crítica), chegada=6}
+Cadastro ID 20: OK | Chamado{id=20, solicitante='João', descricao='Atualização do antivírus', prioridade=3 (Média), chegada=7}
+
+Tentativa de ID duplicado (17): rejeitado corretamente
+
+Tabela hash (7 buckets) - IDs 10, 17, 24 (e 8, 15) colidem:
+[0]
+[1] -> 8 -> 15
+[2]
+[3] -> 10 -> 17 -> 24
+[4]
+[5] -> 5
+[6] -> 20
+Estatísticas: capacidade=7, elementos=7, buckets com colisão=2, maior cadeia=3, redimensionamentos=0
+
+Busca ID 24: Chamado{id=24, solicitante='Fábio', descricao='Monitor sem imagem', prioridade=2 (Normal), chegada=3}
+Busca ID 999: chamado não encontrado
+Próximo (sem remover): Chamado{id=5, solicitante='Gabi', descricao='Banco de dados indisponível', prioridade=5 (Crítica), chegada=4}
+Próximo (de novo, não mudou): Chamado{id=5, solicitante='Gabi', descricao='Banco de dados indisponível', prioridade=5 (Crítica), chegada=4}
+
+Alterando prioridade do chamado 8 de 1 para 5...
+
+--- Atendimento em ordem de prioridade ---
+1º atendido: ID 5 | prioridade 5 | chegada 4 | ainda na tabela? false
+2º atendido: ID 8 | prioridade 5 | chegada 5 | ainda na tabela? false
+3º atendido: ID 15 | prioridade 5 | chegada 6 | ainda na tabela? false
+4º atendido: ID 17 | prioridade 4 | chegada 2 | ainda na tabela? false
+5º atendido: ID 20 | prioridade 3 | chegada 7 | ainda na tabela? false
+6º atendido: ID 10 | prioridade 2 | chegada 1 | ainda na tabela? false
+7º atendido: ID 24 | prioridade 2 | chegada 3 | ainda na tabela? false
+
+Fila vazia -> atenderProximo(): null
+Fila vazia -> consultarProximo(): null
